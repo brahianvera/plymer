@@ -11,11 +11,12 @@
         display: inline-block;
       }
       :host iron-icon{
-        fill: rgba(0,0,0,0);
-        stroke: currentColor;
+        
+        fill: var(--icon-toggle-color, rgba(0,0,0,0));
+        stroke: var(--icon-toggle-outline-color,currentColor);
       }
       :host([pressed]) iron-icon{
-        fill:currentColor;
+        fill: var(--icon-toogle-pressed-color,currentColor);
       }
     </style>
 
@@ -43,7 +44,7 @@
       static get is() {
         return 'icon-toggle';
       }
-      
+
       constructor() {
         super();
       }
