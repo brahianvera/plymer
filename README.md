@@ -1,2 +1,2 @@
-# plymer
+# polymer
 understanding polymer
