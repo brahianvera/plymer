@@ -10,19 +10,46 @@
       :host {
         display: inline-block;
       }
+      :host iron-icon{
+        fill: rgba(0,0,0,0);
+        stroke: currentColor;
+      }
+      :host([pressed]) iron-icon{
+        fill:currentColor;
+      }
     </style>
 
     <!-- shadow DOM goes here -->
-    <span>Not much here yet.</span>
+    <iron-icon icon="[[toggleIcon]]" on-click="toggle">
+    </iron-icon>
   </template>
 
   <script>
     class IconToggle extends Polymer.Element {
+      static get properties(){
+        return{
+          pressed:{
+            type:Boolean,
+            notify:true,
+            reflectToAttribute:true,
+            value: false
+          },
+          toggleIcon:{
+            type: String
+          },
+        }
+      }
+
       static get is() {
         return 'icon-toggle';
       }
+      
       constructor() {
         super();
+      }
+
+      toggle(){
+        this.pressed  = !this.pressed;
       }
     }
     customElements.define(IconToggle.is, IconToggle);
