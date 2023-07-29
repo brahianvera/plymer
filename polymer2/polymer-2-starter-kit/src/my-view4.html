@@ -1,0 +1,24 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html" />
+<link rel="import" href="shared-styles.html" />
+
+<dom-module id="my-view4">
+    <template>
+        <style include="shared-styles">
+            :host {
+              display: block;
+              padding: 10px;
+            }
+        </style>
+        <div class="card">
+            <div class="circle">4</div>
+            <h1>View Four</h1>
+            <p>Vista numero 4 [[username]]</p>
+        </div>
+    </template>
+    <script>
+        class myView4 extends Polymer.Element{
+            static get is(){return 'my-view4'}
+        }
+        window.customElements.define(myView4.is,myView4)
+    </script>
+</dom-module>
