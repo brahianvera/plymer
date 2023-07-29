@@ -1,0 +1,56 @@
+<link rel="import" href="../../polymer/polymer.html">
+<link rel="import" href="../../iron-icons/iron-icons.html">
+<link rel="import" href="../elements/icon-toggle.html">
+
+
+<dom-module id="sum-element">
+  <template>
+    <style>
+      :host {
+        font-family: sans-serif;
+        --icon-toggle-color:lightgrey;
+        /*--icon-toggle-outline-color: black;*/
+        --icon-toogle-pressed-color: red;
+      }
+    </style>
+  
+    <h3>Statically-configured icon-toggles how its going?</h3>
+    
+    <icon-toggle toggle-icon="star"></icon-toggle>
+    <icon-toggle toggle-icon="star" pressed></icon-toggle>
+    
+    <h3>Data-bound icon-toggle</h3>
+
+    <!-- use a computed binding to generate the message -->
+    <div><span>[[_message(isFavorite)]]</span></div>
+
+    <!-- curly brackets ({{}}} allow two-way binding --> 
+    <icon-toggle toggle-icon="favorite" pressed="{{isFavorite}}"></icon-toggle>
+  </template>
+
+  <script>
+    class SumElement extends Polymer.Element {
+      static get is() { return 'sum-element' }
+      _message(fav) {
+        async function kittys(){
+          const response = await fetch('https://api.thecatapi.com/v1/images/0XYvRdoD');
+          if(!response.ok){
+            const message = `An error ha ocurred: ${response.ok}`
+            throw new  Error(message)
+          }
+          const cats = await response.json();
+          console.log(cats);
+          return cats;
+        }
+        kittys();
+        if (fav) {
+          return 'You really like me!';
+        } 
+        else {
+          return 'Do you like meeee?';
+        }
+      }
+    }
+    customElements.define(SumElement.is, SumElement);
+  </script>
+</dom-module>

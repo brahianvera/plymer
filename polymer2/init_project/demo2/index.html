@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+  <head>
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+    <script>
+      /*
+      window.Polymer = window.Polymer || {};
+      window.Polymer.dom = 'shadow';
+      */
+    </script>
+    <link rel="import" href="sum-element.html">
+    <custom-style>
+      <style>
+        html{
+          --icon-toggle-outline-color:red;
+        }
+
+        html {
+          --iron-icon-width: 40px;
+          --iron-icon-height: 40px;
+        }
+
+        sum-element{ 
+          --icon-toogle-pressed-color:blue;
+          --icon-toggle-color:purple;
+        }
+      </style>
+    </custom-style>
+  </head>
+  <body>
+    <sum-element></sum-element>
+  </body>
+</html>
